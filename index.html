@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pražský Instruktor – Privátní výuka lyžování</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-white text-[#333333] font-sans">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-sm fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="#" class="text-xl font-bold text-[#0077C8] flex items-center gap-2">
+            <i data-lucide="mountain" class="w-6 h-6"></i>
+            Pražský Instruktor
+          </a>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#proc-ja" class="text-[#333333] hover:text-[#0077C8] transition">Proč já</a>
+          <a href="#jak-to-funguje" class="text-[#333333] hover:text-[#0077C8] transition">Jak to funguje</a>
+          <a href="#cenik" class="text-[#333333] hover:text-[#0077C8] transition">Ceník</a>
+          <a href="#o-mne" class="text-[#333333] hover:text-[#0077C8] transition">O mně</a>
+          <a href="#faq" class="text-[#333333] hover:text-[#0077C8] transition">FAQ</a>
+          <button
+            onclick="scrollToContact('')"
+            class="bg-[#FF9933] text-white px-4 py-2 rounded-md hover:bg-[#e68a2e] transition shadow-sm font-semibold"
+          >
+            Poptat lekci
+          </button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="flex items-center md:hidden">
+          <button id="menu-toggle" class="text-[#333333] p-2">
+            <i data-lucide="menu" id="icon-menu" class="w-6 h-6"></i>
+            <i data-lucide="x" id="icon-x" class="w-6 h-6 hidden"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100 hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="#proc-ja" class="block px-3 py-2 text-[#333333] hover:bg-blue-50 mobile-nav-link">Proč já</a>
+        <a href="#jak-to-funguje" class="block px-3 py-2 text-[#333333] hover:bg-blue-50 mobile-nav-link">Jak to funguje</a>
+        <a href="#cenik" class="block px-3 py-2 text-[#333333] hover:bg-blue-50 mobile-nav-link">Ceník</a>
+        <a href="#o-mne" class="block px-3 py-2 text-[#333333] hover:bg-blue-50 mobile-nav-link">O mně</a>
+        <a href="#faq" class="block px-3 py-2 text-[#333333] hover:bg-blue-50 mobile-nav-link">FAQ</a>
+        <button
+          onclick="scrollToContact('')"
+          class="block w-full text-left px-3 py-2 text-[#0077C8] font-medium hover:bg-blue-50"
+        >
+          Kontakt
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="relative h-screen min-h-[600px] flex items-center">
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style="background-image: url('your-hero-image.jpg');"
+    ></div>
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-16">
+      <div class="max-w-2xl">
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+          Naučte se lyžovat <br />
+          <span class="text-[#0077C8] font-extrabold drop-shadow-md">(i v Praze)</span>
+        </h1>
+        <p class="text-xl text-white/90 mb-8 leading-relaxed font-medium">
+          Privátní výuka lyžování, zatímco chodíte do práce. V Praze a okolí.
+        </p>
+        <button
+          onclick="scrollToContact('Obecná poptávka')"
+          class="bg-[#FF9933] text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-[#e68a2e] transition shadow-lg transform hover:scale-105 border border-white/20"
+        >
+          Poptat lekci
+        </button>
+      </div>
+
+      <!-- Placeholder pro fotku s helmou -->
+      <div class="absolute bottom-8 right-4 md:right-10 md:bottom-20 w-40 h-40 md:w-56 md:h-56 rounded-full border-4 border-white shadow-2xl overflow-hidden bg-gray-300 flex items-center justify-center">
+        <span class="text-[#333333] text-center text-sm p-2 font-bold leading-snug">
+          Zde vložte<br />Vaši fotku<br />(s helmou)
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Proč lyžovat s Pražským Instruktorem -->
+  <section id="proc-ja" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-16 text-[#333333]">
+        Proč lyžovat s Pražským Instruktorem?
+      </h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+        <!-- Feature 1 -->
+        <div class="p-6 bg-white rounded-xl hover:shadow-lg transition border border-gray-100">
+          <div class="mb-4">
+            <i data-lucide="clock" class="w-8 h-8 text-[#0077C8]"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-[#333333]">Flexibilní časy</h3>
+          <p class="text-[#333333] leading-relaxed text-sm">
+            Časově se přizpůsobím Vašim možnostem. Ale největší výhoda „lyžování v Praze“ je to, že můžete v 17.00 hodin skončit v práci a v 18.00 hodin spolu stojíme na kopci. Je to jako když místo plavání či tenisu v hale chodíte každý týden na kroužek lyžování. Nebo vyrazíme na celý den, pokud máte volno.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="p-6 bg-white rounded-xl hover:shadow-lg transition border border-gray-100">
+          <div class="mb-4">
+            <i data-lucide="map-pin" class="w-8 h-8 text-[#0077C8]"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-[#333333]">Blízko Prahy</h3>
+          <p class="text-[#333333] leading-relaxed text-sm">
+            Učíme se v Praze a okolí. Na carvingovém trenažéru v Praze - Podolí, na sjezdovkách v Chotouni, Monínci či Klínech. Všechno výborně dostupné. Oblíbený mám Hochficht na Rakouské straně Šumavy, nebo třeba ledovec Soelden 😊.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="p-6 bg-white rounded-xl hover:shadow-lg transition border border-gray-100">
+          <div class="mb-4">
+            <i data-lucide="user" class="w-8 h-8 text-[#0077C8]"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-[#333333]">Celostní, individuální přístup</h3>
+          <p class="text-[#333333] leading-relaxed text-sm">
+            Je jedno na jaké jste nyní úrovni. Pokud to myslíte vážně a chcete se (konečně už) zlepšit, pomůžu Vám. Pochopit, jak lyžování funguje, doplnit to, co Vám chybí, změnit to, co nefunguje. Máte strach? Chcete syna připravit na lyžák? Pojďme to spolu zkusit.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="p-6 bg-white rounded-xl hover:shadow-lg transition border border-gray-100">
+          <div class="mb-4">
+            <i data-lucide="users" class="w-8 h-8 text-[#0077C8]"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-[#333333]">Alternativní trénink ve skupině</h3>
+          <p class="text-[#333333] leading-relaxed text-sm">
+            Ekonomická varianta. Tři hodiny tréninku, jedenkrát týdně. Leden – březen. Koncipováno jako mini kurz, 6x tři hodiny tréninku, kdy postupně projdeme 6 klíčových témat techniky lyžování.
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="p-6 bg-white rounded-xl hover:shadow-lg transition border border-gray-100">
+          <div class="mb-4">
+            <i data-lucide="video" class="w-8 h-8 text-[#0077C8]"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-[#333333]">Nadstandardní služby</h3>
+          <p class="text-[#333333] leading-relaxed text-sm">
+            Můžeme cvičit v tělocvičně nebo na trenažéru. Na sněhu vždy video analýza. Pomůžu s výběrem lyžáků a bootfittingem. Dostanete tahák – přesnou nápovědu, jak trénovat, i když s Vámi nebudu.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Jak to funguje -->
+  <section id="jak-to-funguje" class="py-20 bg-[#0077C8] text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-16">Jak to funguje?</h2>
+      <div class="grid md:grid-cols-3 gap-8 relative">
+        <div class="hidden md:block absolute top-8 left-0 w-full h-1 bg-blue-400/30 -z-0 transform scale-x-90"></div>
+
+        <div class="relative z-10 text-center">
+          <div class="w-16 h-16 mx-auto bg-[#FF9933] rounded-full flex items-center justify-center text-2xl font-bold mb-6 shadow-lg border-4 border-[#0077C8]">
+            1
+          </div>
+          <h3 class="text-xl font-semibold mb-4">První krok</h3>
+          <p class="text-white/90 text-sm px-4">
+            Rozhodněte se, že letos s tím lyžováním něco uděláte. Zkuste první lekci nebo se upište na kurz. Napište mi a probereme to 😊.
+          </p>
+        </div>
+
+        <div class="relative z-10 text-center">
+          <div class="w-16 h-16 mx-auto bg-[#FF9933] rounded-full flex items-center justify-center text-2xl font-bold mb-6 shadow-lg border-4 border-[#0077C8]">
+            2
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Druhý krok</h3>
+          <p class="text-white/90 text-sm px-4">
+            Vyberte si variantu z ceníku níže. Vyplňte kontakt a já zavolám zpět. Privátní výuka může začít hned, skupinová od ledna.
+          </p>
+        </div>
+
+        <div class="relative z-10 text-center">
+          <div class="w-16 h-16 mx-auto bg-[#FF9933] rounded-full flex items-center justify-center text-2xl font-bold mb-6 shadow-lg border-4 border-[#0077C8]">
+            3
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Třetí krok</h3>
+          <p class="text-white/90 text-sm px-4">
+            Sejdeme se na svahu a začneme měnit Vaše lyžování. Možnost domluvit i spolujízdu, pokud nemáte auto.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ceník -->
+  <section id="cenik" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-16 text-[#333333]">Ceník</h2>
+      <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+
+        <!-- Večerní výuka -->
+        <div class="relative flex flex-col p-6 bg-white rounded-2xl shadow-sm border border-gray-200">
+          <h3 class="text-xl font-bold text-[#333333] mb-2">Večerní výuka</h3>
+          <div class="mb-4">
+            <span class="text-3xl font-bold text-[#0077C8]">3 500 Kč</span>
+          </div>
+          <p class="text-[#333333]/70 text-sm mb-6 italic">3 hodiny (17:00 - 21:00)</p>
+          <ul class="space-y-3 mb-8 flex-1 text-sm text-[#333333]">
+            <li class="flex items-start">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"></i>
+              <span>Individuální přístup</span>
+            </li>
+            <li class="flex items-start">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"></i>
+              <span>Jedno téma na lekci</span>
+            </li>
+            <li class="flex items-start">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"></i>
+              <span>Video analýza</span>
+            </li>
+            <li class="flex items-start">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"></i>
+              <span>Tahák na doma</span>
+            </li>
+          </ul>
+          <p class="text-xs text-[#333333]/50 mb-4 text-center">Nezahrnuje skipas</p>
+          <button
+            onclick="scrollToContact('Večerní výuka')"
+            class="w-full py-3 rounded-lg font-semibold transition bg-slate-100 text-[#333333] hover:bg-slate-200"
+          >
+            Vybrat
+          </button>
+        </div>
+
+        <!-- Privátní výuka -->
+        <div class="relative flex flex-col p-6 bg-white rounded-2xl shadow-sm border border-[#0077C8] ring-2 ring-[#0077C8] ring-opacity-20">
+          <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#FF9933] text-white text-xs px-3 py-1 rounded-full uppercase tracking-wide font-bold shadow-sm">
+            Doporučuji
+          </span>
+          <h3 class="text-xl font-bold text-[#333333] mb-2">Privátní výuka</h3>
+          <div class="mb-4">
+            <span class="text-3xl font-bold text-[#0077C8]">6 000 Kč</span>
+          </div>
+          <p class="text-[#333333]/70 text-sm mb-6 italic">Celý den (7 hodin)</p>
+          <ul class="space-y-3 mb-8 flex-1 text-sm text-[#333333]">
+            <li class="flex items-start">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"></i>
+              <span>Nejoblíbenější varianta</span>
+            </li>
+            <li class="flex items-start">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"></i>
+              <span>Progresivní výuka</span>
+            </li>
+            <li class="flex items-start">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"></i>
+              <span>Video analýza</span>
+            </li>
+            <li class="flex items-start">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"></i>
+              <span>Tahák na doma</span>
+            </li>
+          </ul>
+          <p class="text-xs text-[#333333]/50 mb-4 text-center">Nezahrnuje skipas</p>
+          <button
+            onclick="scrollToContact('Privátní výuka')"
+            class="w-full py-3 rounded-lg font-semibold transition bg-[#FF9933] text-white hover:bg-[#e68a2e] shadow-md"
+          >
+            Vybrat
+          </button>
+        </div>
+
+        <!-- Skupinový mini kurz -->
+        <div class="relative flex flex-col p-6 bg-white rounded-2xl shadow-sm border border-gray-200">
+          <h3 class="text-xl font-bold text-[#333333] mb-2">Skupinový mini kurz</h3>
+          <div class="mb-4">
+            <span class="text-3xl font-bold text-[#0077C8]">6x 1 200 Kč</span>
+          </div>
+          <p class="text-[#333333]/70 text-sm mb-6 italic">6 lekcí (Celkem 7 200 Kč)</p>
+          <ul class="space-y-3 mb-8 flex-1 text-sm text-[#333333]">
+            <li class="flex items-start">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"></i>
+              <span>3 hodiny večerního lyžování</span>
+            </li>
+            <li class="flex items-start">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"></i>
+              <span>6 klíčových témat</span>
+            </li>
+            <li class="flex items-start">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"></i>
+              <span>Max 10 lyžařů</span>
+            </li>
+          </ul>
+          <p class="text-xs text-[#333333]/50 mb-4 text-center">Min. 4 osoby</p>
+          <button
+            onclick="scrollToContact('Skupinový mini kurz')"
+            class="w-full py-3 rounded-lg font-semibold transition bg-slate-100 text-[#333333] hover:bg-slate-200"
+          >
+            Vybrat
+          </button>
+        </div>
+
+        <!-- Video analýza -->
+        <div class="relative flex flex-col p-6 bg-white rounded-2xl shadow-sm border border-gray-200">
+          <h3 class="text-xl font-bold text-[#333333] mb-2">Video analýza</h3>
+          <div class="mb-4">
+            <span class="text-3xl font-bold text-[#0077C8]">750 Kč / video</span>
+          </div>
+          <p class="text-[#333333]/70 text-sm mb-6 italic">Online do 24 hodin</p>
+          <ul class="space-y-3 mb-8 flex-1 text-sm text-[#333333]">
+            <li class="flex items-start">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"></i>
+              <span>Rozbor zaslaného videa</span>
+            </li>
+            <li class="flex items-start">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"></i>
+              <span>Konkrétní instrukce</span>
+            </li>
+            <li class="flex items-start">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"></i>
+              <span>Co přesně trénovat</span>
+            </li>
+          </ul>
+          <p class="text-xs text-[#333333]/50 mb-4 text-center">Na dálku</p>
+          <button
+            onclick="scrollToContact('Video analýza')"
+            class="w-full py-3 rounded-lg font-semibold transition bg-slate-100 text-[#333333] hover:bg-slate-200"
+          >
+            Vybrat
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Instruktorský kurz D -->
+      <div class="mt-8 p-6 bg-[#333333] text-white rounded-xl text-center md:text-left md:flex items-center justify-between shadow-lg">
+        <div>
+          <h3 class="text-xl font-bold mb-2">Profesionální instruktorský Kurz D</h3>
+          <p class="text-white/80 text-sm md:max-w-2xl">
+            Lektoruji základní kurz pro budoucí instruktory. Akreditace MŠMT. Chcete pracovat v lyžařské škole? Toto je Vaše vstupenka.
+          </p>
+        </div>
+        <button
+          onclick="scrollToContact('Instruktorský Kurz D')"
+          class="mt-4 md:mt-0 px-6 py-2 bg-white text-[#333333] rounded-lg font-semibold hover:bg-gray-100 transition"
+        >
+          Kontaktujte mne
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Napsali o mně -->
+  <section class="py-16 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-12 text-[#333333]">Napsali o mně</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+
+        <!-- Review 1 -->
+        <div class="p-6 bg-gray-50 rounded-lg text-center border border-gray-100">
+          <div class="flex justify-center mb-4 space-x-1 text-[#FF9933]">
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+          </div>
+          <p class="text-[#333333]/80 italic mb-4">
+            "Skvělý přístup, po letech jsem konečně pochopil carving."
+          </p>
+          <p class="font-semibold text-[#333333]">Petr N.</p>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="p-6 bg-gray-50 rounded-lg text-center border border-gray-100">
+          <div class="flex justify-center mb-4 space-x-1 text-[#FF9933]">
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+          </div>
+          <p class="text-[#333333]/80 italic mb-4">
+            "Marek mě zbavil strachu z prudkých svahů. Doporučuji!"
+          </p>
+          <p class="font-semibold text-[#333333]">Jana K.</p>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="p-6 bg-gray-50 rounded-lg text-center border border-gray-100">
+          <div class="flex justify-center mb-4 space-x-1 text-[#FF9933]">
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+          </div>
+          <p class="text-[#333333]/80 italic mb-4">
+            "Videoanalýza mi otevřela oči. Profesionální úroveň."
+          </p>
+          <p class="font-semibold text-[#333333]">Martin V.</p>
+        </div>
+
+      </div>
+      <div class="text-center mt-8">
+        <p class="text-sm text-[#333333]/50">Recenze z Google Snowlines (přeloženo)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- O Pražském Instruktorovi -->
+  <section id="o-mne" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row items-center gap-12">
+        <div class="lg:w-1/2 order-2 lg:order-1">
+          <h2 class="text-3xl font-bold mb-6 text-[#333333]">O Pražském Instruktorovi</h2>
+          <div class="space-y-4 text-[#333333] leading-relaxed">
+            <p>
+              Ahoj, jsem Marek. Bohužel nebydlím na horách, bydlím v Praze. Ale i tak se ze mne stal instruktor a lektor, mám 15 let zkušeností a nejvyšší české vzdělání (APUL A), plus různé zahraniční kempy a akademie.
+            </p>
+            <p>
+              Když to jde, učím převážně v Rakouském Soeldenu ve škole Snowlines, ale když jsem v Praze, jezdím s klienty do okolí Prahy (Chotouň, Monínec, Klíny, Hochficht).
+            </p>
+            <p>
+              Zalyžuju si s Vámi, kde bude třeba. Trénoval jsem i na 300m sjezdovce na Chotouni. Je to 20 minut z Prahy 4 a mají otevřeno do 21:00. Takže naprosto jasně vím, že se můžete naučit lyžovat i „v Praze“.
+            </p>
+            <p class="font-medium text-[#0077C8]">
+              Rozumím i materiálu, nastavení hlavy, fyzické přípravě a mobilitě. S tím vším Vám umím poradit.
+            </p>
+          </div>
+        </div>
+        <div class="lg:w-1/2 order-1 lg:order-2 flex justify-center">
+          <div class="relative w-80 h-96 bg-gray-200 rounded-2xl shadow-xl rotate-2 overflow-hidden border-4 border-white">
+            <img
+              src="https://images.unsplash.com/photo-1605540445354-349611eb2017?q=80&w=1976&auto=format&fit=crop"
+              alt="Marek Instruktor"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-20 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-12 text-[#333333]">Často kladené otázky</h2>
+      <div class="space-y-4">
+
+        <!-- FAQ item 1 -->
+        <div class="faq-item border border-gray-200 rounded-lg overflow-hidden bg-white">
+          <button
+            type="button"
+            class="faq-question w-full px-6 py-4 text-left bg-white hover:bg-gray-50 transition flex justify-between items-center focus:outline-none"
+          >
+            <span class="font-semibold text-[#333333] pr-4">
+              Jak moc musím umět lyžovat na lekci s Pražským Instruktorem?
+            </span>
+            <span class="flex items-center">
+              <i data-lucide="chevron-up" class="faq-icon-up w-5 h-5 text-[#0077C8] flex-shrink-0 hidden"></i>
+              <i data-lucide="chevron-down" class="faq-icon-down w-5 h-5 text-gray-400 flex-shrink-0"></i>
+            </span>
+          </button>
+          <div
+            class="faq-answer bg-white px-6 text-[#333333]/80 text-sm leading-relaxed overflow-hidden transition-all duration-300 max-h-0 py-0 opacity-0"
+          >
+            Vaše úroveň nerozhoduje. Lekci a terén přizpůsobím Vašim potřebám. Tempo individuální lekce určujete Vy. Budeme postupovat tak rychle nebo tak pomalu, jak bude třeba. Pokud už umíte lyžovat a máte konkrétní přání (např. naučit se jezdit prudký terén pod kontrolou, naučit se krátké oblouky, naučit se lyžovat mimo sjezdovku apod.), přizpůsobím výuku tak, abychom šli nejrychlejším způsobem k Vašemu cíli.
+          </div>
+        </div>
+
+        <!-- FAQ item 2 -->
+        <div class="faq-item border border-gray-200 rounded-lg overflow-hidden bg-white">
+          <button
+            type="button"
+            class="faq-question w-full px-6 py-4 text-left bg-white hover:bg-gray-50 transition flex justify-between items-center focus:outline-none"
+          >
+            <span class="font-semibold text-[#333333] pr-4">
+              Berete i začátečníky?
+            </span>
+            <span class="flex items-center">
+              <i data-lucide="chevron-up" class="faq-icon-up w-5 h-5 text-[#0077C8] flex-shrink-0 hidden"></i>
+              <i data-lucide="chevron-down" class="faq-icon-down w-5 h-5 text-gray-400 flex-shrink-0"></i>
+            </span>
+          </button>
+          <div
+            class="faq-answer bg-white px-6 text-[#333333]/80 text-sm leading-relaxed overflow-hidden transition-all duration-300 max-h-0 py-0 opacity-0"
+          >
+            Ano, i začátečníky. Pokud jste nikdy nelyžoval(a), začneme na rovince, pak na mírné loučce, a postupně se spolu všechno naučíme. Doufám, že z Vás vytvořím lyžaře na celý život, je to krásný sport.
+          </div>
+        </div>
+
+        <!-- FAQ item 3 -->
+        <div class="faq-item border border-gray-200 rounded-lg overflow-hidden bg-white">
+          <button
+            type="button"
+            class="faq-question w-full px-6 py-4 text-left bg-white hover:bg-gray-50 transition flex justify-between items-center focus:outline-none"
+          >
+            <span class="font-semibold text-[#333333] pr-4">
+              Když začnu jako úplný začátečník, kdy budu umět lyžovat?
+            </span>
+            <span class="flex items-center">
+              <i data-lucide="chevron-up" class="faq-icon-up w-5 h-5 text-[#0077C8] flex-shrink-0 hidden"></i>
+              <i data-lucide="chevron-down" class="faq-icon-down w-5 h-5 text-gray-400 flex-shrink-0"></i>
+            </span>
+          </button>
+          <div
+            class="faq-answer bg-white px-6 text-[#333333]/80 text-sm leading-relaxed overflow-hidden transition-all duration-300 max-h-0 py-0 opacity-0"
+          >
+            Zatáčet v pluhu se naučíte cca za 3-6 hodin (1-2 lekce). První paralelní oblouky přijdou obvykle za dalších 2-5 lekcí. Ve chvíli, kdy budete umět plynulé obloučky, pod kontrolou, na modré sjezdovce, s paralelními lyžemi, tak „umíte lyžovat“ 😊 Ale věřte mi, tím to teprve začíná…
+          </div>
+        </div>
+
+        <!-- FAQ item 4 -->
+        <div class="faq-item border border-gray-200 rounded-lg overflow-hidden bg-white">
+          <button
+            type="button"
+            class="faq-question w-full px-6 py-4 text-left bg-white hover:bg-gray-50 transition flex justify-between items-center focus:outline-none"
+          >
+            <span class="font-semibold text-[#333333] pr-4">
+              Učíte i děti? Jak malé?
+            </span>
+            <span class="flex items-center">
+              <i data-lucide="chevron-up" class="faq-icon-up w-5 h-5 text-[#0077C8] flex-shrink-0 hidden"></i>
+              <i data-lucide="chevron-down" class="faq-icon-down w-5 h-5 text-gray-400 flex-shrink-0"></i>
+            </span>
+          </button>
+          <div
+            class="faq-answer bg-white px-6 text-[#333333]/80 text-sm leading-relaxed overflow-hidden transition-all duration-300 max-h-0 py-0 opacity-0"
+          >
+            Ano, učím i děti, je jedno, jestli už nějak lyžují, nebo jsou začátečníci. Ale musí být tak velké (tak zdatné), aby se mnou vydržely lyžovat (resp. být na svahu), alespoň tři hodiny, což je minimální délka mojí lekce.
+          </div>
+        </div>
+
+        <!-- FAQ item 5 -->
+        <div class="faq-item border border-gray-200 rounded-lg overflow-hidden bg-white">
+          <button
+            type="button"
+            class="faq-question w-full px-6 py-4 text-left bg-white hover:bg-gray-50 transition flex justify-between items-center focus:outline-none"
+          >
+            <span class="font-semibold text-[#333333] pr-4">
+              Mám lyžování celkem rád(a), ale docela se bojím. Umíte pomoci i se strachem?
+            </span>
+            <span class="flex items-center">
+              <i data-lucide="chevron-up" class="faq-icon-up w-5 h-5 text-[#0077C8] flex-shrink-0 hidden"></i>
+              <i data-lucide="chevron-down" class="faq-icon-down w-5 h-5 text-gray-400 flex-shrink-0"></i>
+            </span>
+          </button>
+          <div
+            class="faq-answer bg-white px-6 text-[#333333]/80 text-sm leading-relaxed overflow-hidden transition-all duration-300 max-h-0 py-0 opacity-0"
+          >
+            Na to jsem specialista 😊. Vyznávám teorii, že strach plyne z toho, že cítíte, že Vaše lyže tak úplně nedělají to, co je třeba. Sebevědomí na lyžích přichází s tím, že VY jste ten, který má sjezdovku pod kontrolou. Naučím Vás, jak řídit lyže po milimetrech.
+          </div>
+        </div>
+
+        <!-- FAQ item 6 -->
+        <div class="faq-item border border-gray-200 rounded-lg overflow-hidden bg-white">
+          <button
+            type="button"
+            class="faq-question w-full px-6 py-4 text-left bg-white hover:bg-gray-50 transition flex justify-between items-center focus:outline-none"
+          >
+            <span class="font-semibold text-[#333333] pr-4">
+              Jak učíte, jak se vlastně liší Pražský Instruktor od ostatních?
+            </span>
+            <span class="flex items-center">
+              <i data-lucide="chevron-up" class="faq-icon-up w-5 h-5 text-[#0077C8] flex-shrink-0 hidden"></i>
+              <i data-lucide="chevron-down" class="faq-icon-down w-5 h-5 text-gray-400 flex-shrink-0"></i>
+            </span>
+          </button>
+          <div
+            class="faq-answer bg-white px-6 text-[#333333]/80 text-sm leading-relaxed overflow-hidden transition-all duration-300 max-h-0 py-0 opacity-0"
+          >
+            Myslím, že lyžování se odehrává v hlavě, ne ve svalech. Budeme hledat pocity a analogie. Když víte, co máte dělat a proč, tak je mnohem snadnější se to naučit. A kromě instruktorského vzdělání rozumím i vybavení a bootfittingu, což má zásadní vliv.
+          </div>
+        </div>
+
+        <!-- FAQ item 7 -->
+        <div class="faq-item border border-gray-200 rounded-lg overflow-hidden bg-white">
+          <button
+            type="button"
+            class="faq-question w-full px-6 py-4 text-left bg-white hover:bg-gray-50 transition flex justify-between items-center focus:outline-none"
+          >
+            <span class="font-semibold text-[#333333] pr-4">
+              Pro koho přesně je vhodný skupinový mini kurz, co musím umět?
+            </span>
+            <span class="flex items-center">
+              <i data-lucide="chevron-up" class="faq-icon-up w-5 h-5 text-[#0077C8] flex-shrink-0 hidden"></i>
+              <i data-lucide="chevron-down" class="faq-icon-down w-5 h-5 text-gray-400 flex-shrink-0"></i>
+            </span>
+          </button>
+          <div
+            class="faq-answer bg-white px-6 text-[#333333]/80 text-sm leading-relaxed overflow-hidden transition-all duration-300 max-h-0 py-0 opacity-0"
+          >
+            Jediná podmínka je, abyste uměl lyžovat paralelně, ne v pluhu. Na každé ze šesti lekcí probereme jedno klíčové téma z lyžařské techniky. Pokud je Vaším jediným a konkrétním cílem carving, pak je lepší si zarezervovat individuální lekci.
+          </div>
+        </div>
+
+        <!-- FAQ item 8 -->
+        <div class="faq-item border border-gray-200 rounded-lg overflow-hidden bg-white">
+          <button
+            type="button"
+            class="faq-question w-full px-6 py-4 text-left bg-white hover:bg-gray-50 transition flex justify-between items-center focus:outline-none"
+          >
+            <span class="font-semibold text-[#333333] pr-4">
+              Jak často bych měl s Vámi trénovat?
+            </span>
+            <span class="flex items-center">
+              <i data-lucide="chevron-up" class="faq-icon-up w-5 h-5 text-[#0077C8] flex-shrink-0 hidden"></i>
+              <i data-lucide="chevron-down" class="faq-icon-down w-5 h-5 text-gray-400 flex-shrink-0"></i>
+            </span>
+          </button>
+          <div
+            class="faq-answer bg-white px-6 text-[#333333]/80 text-sm leading-relaxed overflow-hidden transition-all duration-300 max-h-0 py-0 opacity-0"
+          >
+            Pokud začínáte od nuly, měli bychom lyžovat převážně jen spolu, než budete lyžovat paralelně. Věda říká, že naučit se nový pohyb chce přibližně 300 opakování, ale přeučit špatný 6000. Pokud už umíte, doporučuji strávit spolu jeden celý den na každý týden, který odlyžujete samostatně.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section id="kontakt" class="py-20 bg-[#0077C8] text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-16">
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Kontaktujte mne</h2>
+          <p class="text-white/90 mb-8 text-lg">
+            Máte dotaz? Nevyhovuje Vám nic z výše uvedené nabídky? Napište mi.
+          </p>
+
+          <div class="space-y-6">
+            <div class="flex items-start space-x-4">
+              <i data-lucide="mail" class="w-6 h-6 text-[#FF9933] mt-1"></i>
+              <div>
+                <p class="font-semibold">Email</p>
+                <a
+                  href="mailto:marek@prazskyinstruktor.cz"
+                  class="text-white/90 hover:text-white transition"
+                >
+                  marek@prazskyinstruktor.cz
+                </a>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <i data-lucide="map-pin" class="w-6 h-6 text-[#FF9933] mt-1"></i>
+              <div>
+                <p class="font-semibold">Kde lyžujeme</p>
+                <p class="text-white/90">
+                  Typicky Chotouň, Monínec, Klíny, Hochficht.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-12 p-6 bg-white/10 rounded-xl border border-white/20 backdrop-blur-sm">
+            <p class="text-sm text-white/90 italic">
+              "Nejde to, nejde to, nejde to, a pak najednou jezdíte. Těším se na společné pokroky!"
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white text-[#333333] p-8 rounded-2xl shadow-xl">
+          <form id="contact-form" class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-[#333333] mb-1">
+                O co máte zájem?
+              </label>
+              <input
+                id="interest-input"
+                type="text"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0077C8] focus:border-[#0077C8] outline-none transition"
+                placeholder="Např. Privátní výuka"
+              />
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-[#333333] mb-1">
+                  Jméno a Příjmení
+                </label>
+                <input
+                  type="text"
+                  required
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0077C8] focus:border-[#0077C8] outline-none transition"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-[#333333] mb-1">
+                  Váš Email
+                </label>
+                <input
+                  type="email"
+                  required
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0077C8] focus:border-[#0077C8] outline-none transition"
+                />
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-[#333333] mb-1">
+                Které dny chcete lyžovat?
+              </label>
+              <input
+                type="text"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0077C8] focus:border-[#0077C8] outline-none transition"
+                placeholder="Např. Víkendy, nebo Úterý večer..."
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-[#333333] mb-1">
+                Zpráva / Dotaz
+              </label>
+              <textarea
+                rows="4"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0077C8] focus:border-[#0077C8] outline-none transition"
+                placeholder="Popište vaše zkušenosti, vybavení nebo specifická přání..."
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-[#FF9933] text-white font-bold py-3 rounded-lg hover:bg-[#e68a2e] transition flex justify-center items-center gap-2 shadow-md"
+            >
+              Odeslat poptávku
+              <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-[#333333] text-white/50 py-8 text-center text-sm border-t border-gray-700">
+    <p>
+      &copy; <span id="year"></span> Pražský Instruktor. Všechna práva vyhrazena.
+    </p>
+  </footer>
+
+  <!-- Main JS -->
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Initialize Lucide icons
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconMenu = document.getElementById('icon-menu');
+    const iconX = document.getElementById('icon-x');
+
+    function closeMobileMenu() {
+      if (!mobileMenu) return;
+      mobileMenu.classList.add('hidden');
+      if (iconMenu && iconX) {
+        iconMenu.classList.remove('hidden');
+        iconX.classList.add('hidden');
+      }
+    }
+
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        if (!mobileMenu) return;
+        const isHidden = mobileMenu.classList.contains('hidden');
+        if (isHidden) {
+          mobileMenu.classList.remove('hidden');
+          if (iconMenu && iconX) {
+            iconMenu.classList.add('hidden');
+            iconX.classList.remove('hidden');
+          }
+        } else {
+          closeMobileMenu();
+        }
+      });
+    }
+
+    // Close mobile menu when clicking a link
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMobileMenu();
+      });
+    });
+
+    // Scroll to contact and prefill interest
+    function scrollToContact(selectedInterest) {
+      const interestInput = document.getElementById('interest-input');
+      if (interestInput && selectedInterest) {
+        interestInput.value = selectedInterest;
+      }
+      const contactSection = document.getElementById('kontakt');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+      closeMobileMenu();
+    }
+
+    window.scrollToContact = scrollToContact; // make available for inline onclick
+
+    // FAQ accordion logic
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      const button = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+      const iconUp = item.querySelector('.faq-icon-up');
+      const iconDown = item.querySelector('.faq-icon-down');
+
+      button.addEventListener('click', () => {
+        const isOpen = answer.classList.contains('max-h-96');
+
+        // Close all FAQ items
+        faqItems.forEach(otherItem => {
+          const otherAnswer = otherItem.querySelector('.faq-answer');
+          const otherIconUp = otherItem.querySelector('.faq-icon-up');
+          const otherIconDown = otherItem.querySelector('.faq-icon-down');
+          otherAnswer.classList.remove('max-h-96', 'py-4', 'opacity-100');
+          otherAnswer.classList.add('max-h-0', 'py-0', 'opacity-0');
+          if (otherIconUp && otherIconDown) {
+            otherIconUp.classList.add('hidden');
+            otherIconDown.classList.remove('hidden');
+          }
+        });
+
+        // Toggle current
+        if (!isOpen) {
+          answer.classList.remove('max-h-0', 'py-0', 'opacity-0');
+          answer.classList.add('max-h-96', 'py-4', 'opacity-100');
+          if (iconUp && iconDown) {
+            iconUp.classList.remove('hidden');
+            iconDown.classList.add('hidden');
+          }
+        }
+      });
+    });
+
+    // Contact form behavior
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('Děkuji za zprávu! Ozvu se Vám co nejdříve.');
+        contactForm.reset();
+      });
+    }
+  </script>
+</body>
+</html>
