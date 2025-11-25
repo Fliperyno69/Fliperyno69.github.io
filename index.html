@@ -420,10 +420,6 @@
           </p>
           <p class="font-semibold text-[#333333]">Martin V.</p>
         </div>
-
-      </div>
-      <div class="text-center mt-8">
-        <p class="text-sm text-[#333333]/50">Recenze z Google Snowlines (přeloženo)</p>
       </div>
     </div>
   </section>
@@ -684,16 +680,18 @@
         <div class="bg-white text-[#333333] p-8 rounded-2xl shadow-xl">
           <form id="contact-form" class="space-y-4">
             <div>
-              <label class="block text-sm font-medium text-[#333333] mb-1">
-                O co máte zájem?
-              </label>
-              <input
-                id="interest-input"
-                type="text"
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0077C8] focus:border-[#0077C8] outline-none transition"
-                placeholder="Např. Privátní výuka"
-              />
-            </div>
+  <label class="block text-sm font-medium text-[#333333] mb-1">O co máte zájem?</label>
+  <select
+    id="interest-input"
+    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0077C8] focus:border-[#0077C8] outline-none transition bg-white"
+  >
+    <option value="">Vyberte, prosím…</option>
+    <option value="Večerní výuka">Večerní výuka</option>
+    <option value="Privátní výuka">Privátní výuka</option>
+    <option value="Skupinový mini kurz">Skupinový mini kurz</option>
+    <option value="Video analýza">Video analýza</option>
+    <option value="Profesionální instruktorský Kurz D">Profesionální instruktorský Kurz D</option>
+  </select>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm font-medium text-[#333333] mb-1">
